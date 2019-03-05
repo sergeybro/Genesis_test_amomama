@@ -1,0 +1,375 @@
+@import "node_modules/normalize.scss/normalize";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+@import "fonts";
+$imagePath: '../img/';
+$colorMainRed: #af1b15;
+$colorText: #383838;
+
+$smallScreen: 600px;
+$mediumScreen: 786px;
+$largeScreen: 1180px;
+
+@mixin beforeAfterAbsolutePos($content) {
+  position: absolute;
+  display: block;
+  content: $content;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: 'HelveticaNeue', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-size: 20px;
+  color: $colorText;
+
+  @media (max-width: $smallScreen) {
+    font-size: 18px;
+  }
+}
+p {
+  letter-spacing: 0;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.italic-text {
+  font-family: 'PTSerif-Italic',serif;
+}
+
+i.icon {
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--views {
+    width: 20px;
+    height: 10px;
+    background: url('#{$imagePath}icons_sprites.png') -175px -10px;
+    margin-left: 8px;
+    margin-right: 1px;
+  }
+
+  &--fb {
+    width: 9px; height: 15px;
+    background: url('#{$imagePath}icons_sprites.png') -10px -10px;
+  }
+  &--twitter {
+    width: 16px; height: 13px;
+    background: url('#{$imagePath}icons_sprites.png') -139px -10px;
+  }
+
+  &--google {
+    width: 16px; height: 15px;
+    background: url('#{$imagePath}icons_sprites.png') -103px -10px;
+  }
+
+  &--right {
+    width: 12px; height: 20px;
+    background: url('#{$imagePath}icons_sprites.png') -39px -10px;
+  }
+  &--left {
+    width: 12px; height: 20px;
+    background: url('#{$imagePath}icons_sprites.png') -71px -10px;
+  }
+
+}
+
+.tuko-block {
+  position: relative;
+  &--heading {
+    height: 700px;
+    display: flex;
+    letter-spacing: 1px;
+
+    .tuko-block__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 50px;
+      padding-bottom: 28px;
+    }
+  }
+
+  &--white {
+    .tuko-block__content {
+      padding-top: 60px;
+      padding-bottom: 100px;
+    }
+  }
+
+  &--red {
+    background-color: $colorMainRed;
+    padding-bottom: 12px;
+    overflow: hidden;
+  }
+
+  &__banner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    background-image: url("#{$imagePath}main_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__shadow-overlay {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("#{$imagePath}shadow_overlay.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.article-header {
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 0;
+
+  @media (max-width: $mediumScreen) {
+    font-size: 36px;
+  }
+}
+
+
+.article-summary {
+  @media (max-width: $smallScreen) {
+    margin-bottom: 60px;
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    @media (max-width: $smallScreen) {
+      font-size: 16px;
+    }
+  }
+}
+
+.caption {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.sticky-social {
+  position: absolute;
+  background-color: $colorMainRed;
+  right: 0;
+  bottom: 27px;
+  display: flex;
+
+  &__button {
+    width: 45px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .3s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.paragraph-content {
+  font-size: 20px;
+  width: 100%;
+  max-width: 715px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'PTSerif-Regular', serif;
+
+  @media (max-width: $smallScreen) {
+    font-size: 18px;
+  }
+}
+
+.inside-article-header {
+  font-size: 48px;
+  margin-top: 80px;
+
+  @media (max-width: $mediumScreen) {
+    font-size: 36px;
+  }
+}
+
+.wide-content {
+  width: 100%;
+  max-width: 970px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.features-entry {
+  margin-top: 62px;
+
+  &__herader {
+    font-size: 30px;
+    font-weight: 400;
+    position: relative;
+
+    &::before {
+      @include beforeAfterAbsolutePos('');
+      bottom: 5px;
+      left: 3px;
+      width: 95%;
+      height: 2px;
+      background-color: $colorMainRed;
+
+      @media (max-width: $mediumScreen) {
+        bottom: 2px;
+      }
+    }
+  }
+
+  &__number {
+    font-size: 48px;
+    font-family: 'PTSerif-Italic', serif;
+    color: $colorMainRed;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    left: -2px;
+    &::before {
+      @include beforeAfterAbsolutePos(attr(data-number));
+      left: -20px;
+      top: -57px;
+      color: $colorText;
+      opacity: .1;
+      font-size: 154px;
+      font-family: 'HelveticaNeue', sans-serif;
+      font-weight: 700;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+
+  &__paragraph {
+    color: #fff;
+    text-align: center;
+    font-family: 'PTSerif-Regular', serif;
+    font-size: 18px;
+    margin-top: 6px;
+    @media (max-width: $largeScreen) {
+      margin-top: 20px;
+    }
+    @media (max-width: $mediumScreen) {
+      font-size: 16px;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: 970px;
+    margin: auto;
+    padding-top: 16px;
+  }
+
+  &__image {
+    display: block;
+    margin: auto;
+    @media (max-width: $mediumScreen) {
+      width: 100%;
+    }
+  }
+  .glide__arrows {
+    @media (max-width: $largeScreen) {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+  .glide__arrow {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @media (max-width: $largeScreen) {
+      position: static;
+    }
+    &--left {
+      left: -89px;
+      top: 44px;
+    }
+    &--right {
+      right: -89px;
+      top: 44px;
+    }
+  }
+}
+
+.video-block {
+  position: relative;
+  width: 100%;
+  max-width: 715px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 54px;
+  margin-bottom: 90px;
+
+  &__container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+footer {
+  background-color: $colorMainRed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
